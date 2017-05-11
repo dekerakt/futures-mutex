@@ -37,9 +37,11 @@
 //! # }
 //! ```
 //!
-//! Note that `poll_lock` method of Mutex mutex must be called inside the
-//! context of the task, otherwise it will panic. So every call must be inside the future, like
-//! shown below:
+//! Note that `poll_lock` method of the mutex must be called inside the
+//! context of the task, otherwise it will panic.
+//!
+//! You can also call `lock` method of the mutex, which returns a future which resolves to
+//! the owned-guard.
 //!
 //! ```
 //! # extern crate futures_mutex;
