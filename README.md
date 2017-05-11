@@ -5,6 +5,20 @@ A mutex is designed to use along with `futures` crate. API is similar to
 [`BiLock<T>`](https://docs.rs/futures/0.1/futures/sync/struct.BiLock.html)
 from futures crate. Though, it can be cloned as long as you need.
 
+## Installation
+
+This crate can be included in your Cargo enabled project like this:
+
+```toml
+[dependencies]
+futures-mutex = { git = "https://github.com/dekerakt/futures-mutex" }
+```
+
+Then include `futures-mutex` in your project like this:
+```rust
+extern crate futures_mutex;
+```
+
 ## Examples
 ```rust
 let lock1 = Mutex::new(0);
