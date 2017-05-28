@@ -72,7 +72,7 @@ use futures::task::{park, Task};
 /// A mutex designed to use along with futures crate. API is similar to
 /// [`futures::sync::BiLock`](https://docs.rs/futures/0.1/futures/sync/struct.BiLock.html).
 /// Though, it can be cloned as long as you need.
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 pub struct Mutex<T> {
     inner: Arc<Inner<T>>
 }
@@ -147,6 +147,14 @@ impl<T> Mutex<T> {
 impl<T> Drop for Inner<T> {
     fn drop(&mut self) {
         assert_eq!(self.locked.load(Ordering::SeqCst), false)
+    }
+}
+
+impl<T> Clone for Mutex<T> {
+    fn clone(&self) -> Mutex<T> {
+        Mutex {
+            inner: self.inner.clone()
+        }
     }
 }
 
