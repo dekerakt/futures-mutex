@@ -2,7 +2,7 @@ extern crate futures_mutex;
 extern crate futures;
 
 use futures_mutex::Mutex;
-use futures::{future, Async, Future};
+use futures::Future;
 
 fn main() {
     let data = Mutex::new(2);
